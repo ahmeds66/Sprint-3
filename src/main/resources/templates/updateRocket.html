@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en"
+        xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="template">
+<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/5.2.3/css/bootstrap.min.css" />
+<head>
+    <meta charset="UTF-8">
+    <title>Update Rocket</title>
+</head>
+<body>
+<div th:replace="template"></div>
+<div class="container mt-5">
+    <div class="card">
+        <div class="card-header">
+            <h2>Update Rocket</h2>
+        </div>
+        <div class="card-body">
+            <form th:action="@{saveRocket}" method="post">
+                <div class="form-group">
+                    <label class="control-label" hidden >Id</label>
+                    <input type="text" name="id" class="form-control" th:value="${rocket.idRocket}" hidden/>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Name</label>
+                    <input type="text" name="name" class="form-control"  placeholder="Enter name" th:value="${rocket.name}">
+                    <span class="text-danger" th:errors="${rocket.name}"></span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Low Orbit Payload</label>
+                    <input type="number" name="lowOrbitPayload" class="form-control"  placeholder="Enter low orbit payload"
+                           th:value="${rocket.lowOrbitPayload}">
+                    <span class="text-danger" th:errors="${rocket.lowOrbitPayload}"></span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">High Orbit Payload</label>
+                    <input type="number" name="highOrbitPayload" class="form-control"  placeholder="Enter high orbit payload"
+                           th:value="${rocket.highOrbitPayload}">
+                    <span class="text-danger" th:errors="${rocket.highOrbitPayload}"></span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Date of launch</label>
+                    <input type="date" name="lunchDate" class="form-control"  placeholder="Enter date of launch"
+                           th:value="${rocket.lunchDate}">
+                    <span class="text-danger" th:errors="${rocket.lunchDate}"></span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Number of launches</label>
+                    <input type="number" name="nbLaunches" class="form-control"  placeholder="Enter number of launches"
+                           th:value="${rocket.nbLaunches}">
+                    <span class="text-danger" th:errors="${rocket.nbLaunches}"></span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Fails</label>
+                    <input type="number" name="fails" class="form-control"  placeholder="Enter fails"
+                           th:value="${rocket.fails}">
+                    <span class="text-danger" th:errors="${rocket.fails}"></span>
+                </div>
+                <div>
+                    <button type="submit" class="btn btn-primary">Update</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
